@@ -1,1 +1,84 @@
-COMING SOON
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queen Sitra</title>
+
+    <style>
+
+        *{
+            position:relative;
+            box-sizing: border-box;
+        }
+
+        html,body{
+            width:100%;
+            height:100%;
+            margin:0px;
+        }
+
+        body{
+            background: url("i/bg.png");
+            background-size:cover;
+            background-position: center center;
+        }
+
+        .main_container{
+            width:460px;
+            max-width:90%;
+            height:620px;
+            position:absolute;
+            top:0px;
+            bottom:0px;
+            left:0px;
+            right:0px;
+            margin:auto;
+            text-align: center;
+            max-width:90%;
+            max-height:90%;
+            overflow: auto;
+        }
+
+        a{
+            margin-bottom:10px;
+            display:block;
+            filter:drop-shadow(0px 4px rgba(0,0,0,0.7));
+        }
+
+        a:hover{
+            top:4px;
+            filter:drop-shadow(0px 0px rgba(0,0,0,0.7));
+        }
+
+        .main_image{
+            margin:auto;
+            margin-bottom:20px;
+            width:80%;
+            filter:drop-shadow(0px 4px rgba(0,0,0,0.7));
+        }
+
+        @media screen and (max-width:1024px) and (orientation:landscape) {
+            a{
+                display:inline-block;
+                width:40%;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class='main_container'>
+        <img class='main_image' src="i/_main.svg" alt="Queen Sitra">
+        <a href=""><img src="i/_twitch.svg" alt="Twitch"></a>
+        <a href=""><img src="i/_youtube.svg" alt="Youtube"></a>
+        <a href=""><img src="i/_discord.svg" alt="Discord"></a>
+        <a href=""><img src="i/_twitter.svg" alt="Twitter"></a>
+        <a href=""><img src="i/_of.svg" alt="Onlyfans"></a>
+        <a href=""><img src="i/_merch.svg" alt="Merch"></a>
+    </div>
+</body>
+</html>
