@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<title>Queen Sitra's Schedule</title>
+<style>
+*{
+	box-sizing:border-box;
+	position:relative;
+	font-family:sans-serif;
+}
+
+h1{
+	color:#fff;
+	font-size:3em;
+}
+
+table{
+	width:800px;
+	max-width:80%;
+	margin:auto;
+	vertical-align:middle;
+}
+
+
+body{
+	background:#333;
+	text-align:center;
+	font-size:0.75em;
+}
+
+.countdown{
+	padding:15px;
+	margin:15px auto;
+	background:#fff;
+	font-size:2em;
+	font-family:sans-serif;
+	text-align:center;
+	display:block;
+	border-radius:5px;
+	text-decoration:none;
+	color:#000;
+	width:500px;
+	max-width:100%;
+}
+
+.passed{
+	display:none;
+}
+
+.countdown:hover{
+	background:#000;
+	color:#fff;
+}
+
+.countdown div{
+	margin-top:10px;
+	font-size:0.75em;
+}
+</style>
+</head>
+<body>
+	<h1>Queen Sitra's Streaming Schedule</h1>
+	
+	<a href='https://fansly.com/queensitra' class='countdown'>Backstage Designer Stream - 06 Feb 2022 17:00:00 PST</a>
+	
+	<a href='https://twitch.tv/queensitra' class='countdown'>Hitman 3 & Link's Awakening - 07 Feb 2022 19:00:00 PST</a>
+	
+	<a href='https://fansly.com/queensitra' class='countdown'>Backstage Designer Stream - 08 Feb 2022 15:00:00 PST</a>
+	<a href='https://fansly.com/queensitra' class='countdown'>Sitra Fansly Stream - 08 Feb 2022 19:00:00 PST</a>
+	
+	<a href='https://twitch.tv/queensitra' class='countdown'>Twitch Gaming - 09 Feb 2022 19:00:00 PST</a>
+	
+	<a href='https://fansly.com/queensitra' class='countdown'>Backstage Designer Stream - 10 Feb 2022 15:00:00 PST</a>
+	<a href='https://fansly.com/queensitra' class='countdown'>Sitra Fansly Stream - 10 Feb 2022 19:00:00 PST</a>
+	
+	<a href='https://twitch.tv/queensitra' class='countdown'>Friday Party - 11 Feb 2022 19:00:00 PST</a>
+	
+<script>
+function pad(d){
+	d = d.toString();
+	while(d.length < 2){
+		d = '0'+d;
+	}
+	return d;
+}
+
+function td(){
+	return document.createElement('td');
+}
+
+function tableRow(args){
+	const tr = document.createElement('tr');
+	for(let i = 0; i < arguments.length; i++){
+		const td = document.createElement('td');
+		td.textContent = arguments[i];
+		tr.appendChild(td);
+	}
+	return tr;
+}
+
+function formatTime(target){
+	const time = new Date(target);
+	const now = new Date();
+
+	const ms = time.getTime() - now.getTime();
+
+	if(ms < 0){
+		return 'passed';
+	}
+
+
+	const days = Math.floor(ms / (1000 * 60 * 60 * 24));
+	const hours = Math.floor(ms / (1000 * 60 * 60) - days * 24);
+	const minutes = Math.floor(ms / (1000 * 60) % 60);
+	const seconds = Math.floor( (ms / (1000 )) % 60 )
+	const div = document.createElement('div');
+	const table = document.createElement('table');
+	table.appendChild(tableRow('Days','Hours','Minutes','Seconds'));
+	table.appendChild(tableRow(days,hours,minutes,seconds)); 
+	div.textContent = target;
+	div.appendChild(table);
+	return div;
+}
+
+const times = document.querySelectorAll('.countdown');
+
+for(let i = 0; i < times.length; i++){
+	const parts = times[i].textContent.split('-');
+	const title = parts[0];
+	const targetTime = parts[1];
+
+	function loop(){
+		const time = formatTime(targetTime);
+		if(time === 'passed'){
+			times[i].className += ' passed';
+			times[i].textContent = title;
+		}else{
+			times[i].textContent = title;
+			times[i].appendChild(time);
+			setTimeout(loop,1000);
+		}
+	};
+	loop();
+}
+</script>
+</body>
+</html>
