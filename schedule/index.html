@@ -95,6 +95,10 @@ hr{
 	opacity:0.3;
 }
 
+.live h2{
+	margin:5px;
+}
+
 </style>
 </head>
 <body>
@@ -104,16 +108,10 @@ hr{
 	
 	<h3>click countdown to go to stream</h3>
 
-	<!--<a style='background:#17181b' href='https://fansly.com/queensitra' class='countdown'>Fansly: Backstage Designer Stream - 06 Feb 2022 17:00:00 PST</a>-->
-	
-	<a style='background:#6441a4; box-shadow: 0px 4px 0px #442184;'  href='https://twitch.tv/queensitra' class='countdown'>Twitch: Hitman 3 & Link's Awakening - 07 Feb 2022 19:00:00 PST</a>
-	
-	<!--<a style='background:#17181b' href='https://fansly.com/queensitra' class='countdown'>Fansly: Backstage Designer Work Stream - 08 Feb 2022 15:00:00 PST</a>-->
 	<a style='background:#17181b' href='https://fansly.com/queensitra' class='countdown'>Fansly: Designer Work Stream - 08 Feb 2022 21:30:00 PST</a>
 
 	<a style='background:#6441a4; box-shadow: 0px 4px 0px #442184;' href='https://twitch.tv/queensitra' class='countdown'>Twitch: Sitra Plays Link's Awakening (Remake) - 09 Feb 2022 19:00:00 PST</a>
 	
-	<!--<a style='background:#17181b' href='https://fansly.com/queensitra' class='countdown'>Fansly: Backstage Designer Work Stream - 10 Feb 2022 15:00:00 PST</a>-->
 	<a  style='background:#17181b'href='https://fansly.com/queensitra' class='countdown'>Fansly: Late Night Talk & Hypnosis with Sitra - 10 Feb 2022 19:00:00 PST</a>
 	
 	<a style='background:#6441a4; box-shadow: 0px 4px 0px #442184;' href='https://twitch.tv/queensitra' class='countdown'>Twitch: Friday Party with Sitra - 11 Feb 2022 19:00:00 PST</a>
@@ -177,8 +175,9 @@ for(let i = 0; i < times.length; i++){
 	function loop(){
 		const time = formatTime(targetTime);
 		if(time === 'passed'){
-			times[i].className += ' passed';
+			times[i].className += ' live';
 			times[i].textContent = title;
+			times[i].innerHTML += '<br/><h2>Live Now!</h2>';
 		}else{
 			times[i].textContent = title;
 			times[i].appendChild(document.createElement('hr'));
