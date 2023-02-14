@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+    integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+    crossorigin="anonymous"
+    defer
+  ></script>
+  <script src="webgl-demo.js?123" type="module" defer></script>
+    <style>
+
+        html,body{
+            width:100%;
+            height:100%;
+            margin:0px;
+            padding:0px;
+            overflow:hidden;
+        }
+
+        #twitch-embed,iframe{
+            width:100%;
+            height:100%;
+        }
+
+        .tip-button{
+            padding:10px;
+            font-size:1.2em;
+            position:fixed;
+            top:0px;
+            left:0px;
+            right:0px;
+            bottom:0px;
+            margin:auto;
+            width:320px;
+            height:132px;
+            font-weight:bold;
+            text-transform: uppercase;
+            z-index: 999;
+            background:url('tip_button.png');
+            background-size:contain;
+            background-repeat:no-repeat;
+        }
+
+        #glcanvas{
+            z-index:99;
+            position:fixed;
+            top:0px;
+            left:0px;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0);
+            pointer-events: none; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <a class='tip-button' target="_blank" href="https://streamelements.com/queensitra/tip"></a>
+    <!-- Add a placeholder for the Twitch embed -->
+    <div id="twitch-embed"></div>
+    <canvas id="glcanvas" width="640" height="480"></canvas>
+    <!-- Load the Twitch embed JavaScript file -->
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <!--<script src="/libs/quickshader.js"></script>-->
+    <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
+    <script type="text/javascript">
+      new Twitch.Embed("twitch-embed", {
+        width: '100%',
+        height: '100%',
+        autoplay:true,
+        allowfullscreen:false,
+        channel: "queensitra",
+        // Only needed if this page is going to be embedded on other websites
+        parent: ["localhost", "queensitra.com"]
+      });
+
+      const glcanvas = document.querySelector('#glcanvas');
+      const tipButton = document.querySelector('.tip-button');
+
+      tipButton.style.display = 'none';
+
+      setTimeout(loop,1000*20);
+      
+      function loop(){
+        
+        tipButton.style.display = '';
+
+        setTimeout(function(){
+            tipButton.style.display = 'none';
+        },1000*30);
+
+        const time = 1000*60*Math.max(10,Math.random()*60);
+        console.log(time/60/1000);
+        setTimeout(loop,time);
+      
+      }
+
+      const loadingBar = document.createElement('canvas');
+      loadingBar.width = window.innerWidth;
+      loadingBar.height = 16;
+      document.body.appendChild(loadingBar);
+
+
+    </script>
+  </body>
+</html>
