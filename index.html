@@ -20,7 +20,6 @@
         }
 
         body{
-            background: url("i/bg.png");
             background-size:cover;
             background-position: center center;
         }
@@ -40,13 +39,13 @@
             max-height:90%;
         }
 
-        a{
+        .main_container a{
             margin-bottom:10px;
             display:block;
             filter:drop-shadow(0px 4px rgba(0,0,0,0.7));
         }
 
-        a:hover{
+        .main_container :hover{
             top:4px;
             filter:drop-shadow(0px 0px rgba(0,0,0,0.7));
         }
@@ -65,20 +64,45 @@
             }
         }
 
+        .tip_button{
+            position:absolute;
+            left:10px;
+            bottom:10px;
+        }
+
+        .tip_button:hover{
+           filter:drop-shadow(0px 0px 20px red);
+        }
+
+        video{
+            object-fit: cover;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
     </style>
 
 </head>
 <body>
 
+    <video autoplay muted loop>
+        <source src="/v/bg.mp4" type="video/mp4">
+        <source src="/v/bg.webm" type="video/webm">
+    </video>
+
     <div class='main_container'>
-        <img class='main_image' src="i/main.svg" alt="Queen Sitra">
+        <img class='main_image' src="/i/main.svg" alt="Queen Sitra">
         <a href="//fansly.com/queensitra"><img src="/i/Fansly.svg" alt="Fansly"></a>
         <a href="//twitch.tv/queensitra"><img src="/i/twitch.svg" alt="Twitch"></a>
         <a href="//youtube.com/queensitra"><img src="/i/youtube.svg" alt="Youtube"></a>
         <a href="//discord.com/invite/AeJ3xrdpaV"><img src="/i/discord.svg" alt="Discord"></a>
         <a href="//twitter.com/queensitra"><img src="/i/twitter.svg" alt="Twitter"></a>
         <a href="//onlyfans.com/queensitra"><img src="/i/of.svg" alt="Onlyfans"></a>
-                <a href="//queensitra-shop.fourthwall.com"><img src="/i/merch.svg" alt="Merch"></a>
+        <a href="//queensitra-shop.fourthwall.com"><img src="/i/merch.svg" alt="Merch"></a>
     </div>
+    <a class="tip_button" href="https://streamelements.com/queensitra/tip"><img src="/i/send_tips.png" alt="Send Tips"></a>
 </body>
 </html>
