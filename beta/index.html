@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            position:relative;
+            box-sizing: border-box;
+            color:#fff;
+        }
+
+        html,body{
+            width: 100%;
+            height:100%;
+            margin:0px;
+            padding:0px;   
+        }
+
+        body{
+            text-align:center;
+            background:#000;
+            background-image:url('/i/bg10.jpg');
+            background-position:center center;
+            background-repeat:no-repeat;
+            padding:5em;
+        }
+
+        .header{
+            display:block;
+            width:80%;
+            margin:50px auto;
+            filter:drop-shadow(0px 0px 2px rgba(0,0,0,0.5));
+            text-shadow: 0px 0px 4px rgba(0,0,0,1.0);
+        }
+
+        .video{
+            width:100%;
+            height:100%;
+            display:inline-block;
+            background-size:cover !important;
+            background-position:center center !important;
+            border-radius:15px;
+            padding:10px;
+        }
+        
+        .wrapper{
+            margin:10px;
+            display:inline-block;
+            height:400px;
+            width:400px;
+        }
+
+        .video h1, .video h2{
+            margin:0px;
+            filter:drop-shadow(0px 0px 2px rgba(0,0,0,0.5));
+            text-shadow: 0px 0px 4px rgba(0,0,0,1.0);
+        }
+
+        .video .container{
+            position:absolute;
+            left:0px;
+            right:0px;
+            bottom:15px;            
+        }
+
+        .popup{
+            width:100%;
+            height: 100%;
+            background:rgba(0,0,0,0.5);
+            position:fixed;
+            top:0px;
+            left:0px;
+            right:0px;
+            bottom:0px;
+            width:100%;
+            height:100%;
+            padding:25px;
+        }
+
+        .popup:before{
+            content:"X";
+            position:fixed;
+            top:10px;
+            right:20px;
+            font-size:2em;
+        }
+
+        .popup iframe{
+            margin:auto;
+            width:80%;
+            height:80%;
+        }
+
+        .popup a{
+            display:inline-block;
+            width:40%;
+        }
+
+        .seriesContainer{
+            border:solid 1px #fff;
+            border-radius:10px;
+            margin:auto;
+            padding:25px;
+        }
+
+    </style>
+</head>
+<body>
+    <img src="/i/main.svg" class="header">
+
+    <script>
+
+        const Elem = new Proxy({},{
+            get(target,prop,receiver){
+                return document.createElement(prop);
+            }
+        });
+
+        const videos = {
+            "Professor Sitra Ep. 3":{
+                series:"Professor Series",
+                subtitle:"Under My Spell",
+                length:"7:42",
+                tags:['fyp','mesmerizing','JOI'],
+                thumb:"thumb/prof3.png",
+                flink:"https://fansly.com/post/540646260072259584",
+                olink:"",
+                trailer:"https://www.youtube.com/embed/5E0Gr2fB7F8"
+            },
+            "Professor Sitra Ep. 2":{
+                series:"Professor Series",
+                subtitle:"Drop Fast, Pop fast",
+                length:"5:00",
+                tags:['fyp','mesmerizing','JOI','femdom'],
+                thumb:"thumb/prof2.png",
+                flink:"https://fansly.com/post/538109503464288256",
+                olink:""
+            },"Professor Sitra Ep. 1":{
+                series:"Professor Series",
+                subtitle:"Drop into mesmerizing class",
+                length:"7:00",
+                tags:['fyp','mesmerizing','JOI'],
+                thumb:"thumb/prof1.png",
+                flink:"https://fansly.com/post/535572745736433664",
+                olink:""
+            }
+        }
+
+       renderLinks(); 
+
+        function renderLinks(){
+
+            const seriesContainers = {};
+
+            for(let title in videos){
+
+                if( !seriesContainers[videos[title].series]){
+                    const c = Elem.div;
+                    seriesContainers[videos[title].series] = c;
+                    c.className = 'seriesContainer';
+                    const title2 = Elem.h1;
+                    title2.textContent = videos[title].series;
+                    document.body.appendChild(c);
+                    c.appendChild(title2);
+                }
+
+                const wrapper = Elem.div;
+                wrapper.className = 'wrapper';
+                seriesContainers[videos[title].series].appendChild(wrapper);
+
+                let div = Elem.div
+                div.className = 'video';
+                wrapper.appendChild(div)      
+                
+                const container = Elem.div;
+                container.className = 'container';
+                div.appendChild(container);
+
+                const h1 = Elem.h1
+                h1.textContent = title;
+                container.appendChild(h1);
+
+                const h2 = Elem.h2;
+                h2.textContent = videos[title].subtitle;
+                container.appendChild(h2);
+
+                div.style.background = `url(${videos[title].thumb})`;
+
+                div.addEventListener('mousedown',function(){
+                    const popup = Elem.div;
+                    popup.innerHTML = `
+                    <iframe width="560" height="315" src="${videos[title].trailer}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    `
+                    popup.className = 'popup';
+                    document.body.appendChild(popup);
+                    popup.addEventListener('mousedown',function(){
+                        popup.remove();
+                    },false);
+
+                    const f = Elem.a;
+                    f.href = videos[title].flink;
+                    popup.appendChild(f);
+                    const img = new Image();
+                    img.src = '/i/fansly.svg';
+                    f.appendChild(img);
+
+                    const o = Elem.a;
+                    o.href = videos[title].olink;
+                    popup.appendChild(o);
+                    const img2 = new Image();
+                    img2.src = '/i/onlyfans.svg';
+                    o.appendChild(img2);
+
+                },false);
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>
