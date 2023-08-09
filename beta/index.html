@@ -26,12 +26,13 @@
             background-image:url('/i/bg10.jpg');
             background-position:center center;
             background-repeat:no-repeat;
+            background-size:cover;
             padding:5em;
         }
 
         .header{
             display:block;
-            width:80%;
+            width:40%;
             margin:50px auto;
             filter:drop-shadow(0px 0px 2px rgba(0,0,0,0.5));
             text-shadow: 0px 0px 4px rgba(0,0,0,1.0);
@@ -45,19 +46,50 @@
             background-position:center center !important;
             border-radius:15px;
             padding:10px;
+            cursor: pointer;
+            position:absolute;
+            top:0px;
+            left:0px;
+            right:0px;
+            bottom:0px;
+            margin:auto;
+        }
+
+        .video:after{
+            content:"►";
+            position:absolute;
+            left:0px;
+            right:0px;
+            bottom:0px;
+            top:0px;
+            margin:auto;
+            width:100%;
+            height:80px;
+            font-size:4em;
+            opacity:0.5;
+        }
+
+        .video:hover{
+            width:105%;
+            height:105%;
+            left:-2.5%;
+            filter:drop-shadow(0px 0px 5px rgba(0,0,0,1.0));
+            z-index:999;
         }
         
         .wrapper{
             margin:10px;
             display:inline-block;
-            height:400px;
+            height:200px;
             width:400px;
+            cursor: pointer;
         }
 
         .video h1, .video h2{
             margin:0px;
             filter:drop-shadow(0px 0px 2px rgba(0,0,0,0.5));
             text-shadow: 0px 0px 4px rgba(0,0,0,1.0);
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .video .container{
@@ -79,6 +111,7 @@
             width:100%;
             height:100%;
             padding:25px;
+            z-index:99999;
         }
 
         .popup:before{
@@ -97,14 +130,26 @@
 
         .popup a{
             display:inline-block;
-            width:40%;
+            width:20%;
+            height:20%;
         }
 
         .seriesContainer{
-            border:solid 1px #fff;
-            border-radius:10px;
             margin:auto;
             padding:25px;
+        }
+
+        .callToAction{
+            text-transform: uppercase;
+            font-size:2em;
+            text-shadow: 0px 0px 4px rgba(0,0,0,1.0);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        @media screen and (max-width:1024px){
+            body{
+                background:red;
+            }
         }
 
     </style>
@@ -121,6 +166,16 @@
         });
 
         const videos = {
+             "Professor Sitra Ep. 4":{
+                series:"Professor Series",
+                subtitle:"Under My Spell",
+                length:"7:42",
+                tags:['fyp','mesmerizing','JOI'],
+                thumb:"thumb/prof3.png",
+                flink:"https://fansly.com/post/540646260072259584",
+                olink:"",
+                trailer:"https://www.youtube.com/embed/5E0Gr2fB7F8"
+            },
             "Professor Sitra Ep. 3":{
                 series:"Professor Series",
                 subtitle:"Under My Spell",
@@ -139,7 +194,8 @@
                 thumb:"thumb/prof2.png",
                 flink:"https://fansly.com/post/538109503464288256",
                 olink:""
-            },"Professor Sitra Ep. 1":{
+            },
+            "Professor Sitra Ep. 1":{
                 series:"Professor Series",
                 subtitle:"Drop into mesmerizing class",
                 length:"7:00",
@@ -200,6 +256,11 @@
                     popup.addEventListener('mousedown',function(){
                         popup.remove();
                     },false);
+
+                    const div = Elem.div;
+                    div.className = 'callToAction';
+                    div.textContent = 'watch full version below';
+                    popup.appendChild(div);
 
                     const f = Elem.a;
                     f.href = videos[title].flink;
