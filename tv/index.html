@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            position:relative;
+            box-sizing: border-box;
+        }
+
+    html,body{
+            width:100%;
+            height:100%;
+            margin:0px;
+            overflow:hidden;
+    }
+
+    </style>
+</head>
+<body>
+
+    <div id="ytplayer"></div>
+
+    <script>
+      // Load the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/player_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+      // Replace the 'ytplayer' element with an <iframe> and
+      // YouTube player after the API code downloads.
+      var player;
+      let lastState = -1;
+      function onYouTubePlayerAPIReady() {
+        player = new YT.Player('ytplayer', {
+          height: window.innerHeight,
+          width:window.innerWidth,
+          videoId: 'dHzRWG9K9ZY',
+          playerVars:{
+            controls:0,
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange,
+        }
+      });
+      }
+
+      function onPlayerStateChange(state){
+        if(lastState === -1 && state.data === 1){
+            lastState = 1;
+            const time = (Date.now() / 1000 ) % player.getDuration();
+            player.seekTo(time);
+        }
+      }
+
+      window.addEventListener('resize',function(){
+        player.setSize(window.innerWidth,window.innerHeight);
+
+      },false);
+    function onPlayerReady(){
+    
+    }
+
+    </script>
+    
+
+</body>
+</html>
