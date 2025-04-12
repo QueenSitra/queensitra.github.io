@@ -26,7 +26,8 @@
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="Layer_1" /><defs
+     inkscape:current-layer="Layer_1"
+     showguides="true" /><defs
      id="defs1"><style
        id="style1">.cls-1{fill:#40b4e6;}.cls-1,.cls-2,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9,.cls-10,.cls-11,.cls-12,.cls-13,.cls-14,.cls-15,.cls-16,.cls-17,.cls-18,.cls-19,.cls-20,.cls-21{stroke-width:0px;}.cls-2{fill:#40b9ea;}.cls-3{fill:#40a9db;}.cls-4{fill:#00aff0;}.cls-22{fill:none;stroke:#01afef;stroke-miterlimit:10;stroke-width:2px;}.cls-5{fill:#bfe7f8;}.cls-6{fill:#02b0ef;}.cls-7{fill:#bee2f3;}.cls-8{fill:#018ccf;}.cls-9{fill:#40c3f3;}.cls-10{fill:#28a1da;}.cls-11{fill:#ab69ff;}.cls-12{fill:#b3def2;}.cls-13{fill:#01afef;}.cls-14{fill:#018dcf;}.cls-15{fill:#5db9e3;}.cls-16{fill:#161618;}.cls-17{fill:#40bdee;}.cls-18{fill:#008ccf;}.cls-19{fill:#6bc8ee;}.cls-20{fill:#e6f7fd;}.cls-21{fill:#028dd0;}</style></defs><path
      class="cls-16"
@@ -130,7 +131,7 @@
 	.st1{fill:#D90A16;}
 </style><g
      id="g9"
-     transform="matrix(0.49484333,0,0,0.49484333,116.46438,13.116987)">
+     transform="matrix(0.45772855,0,0,0.45772855,129.9556,14.739645)">
 	<g
    id="g1">
 		<path
